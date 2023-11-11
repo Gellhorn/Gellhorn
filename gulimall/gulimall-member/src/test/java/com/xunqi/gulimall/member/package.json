@@ -1,0 +1,63 @@
+
+  {
+    path: "/permission",
+    redirect: "/permission/page",
+    component: LAYOUT,
+    meta: { title: "投诉处理", roles: ["admin", "editor", "test"] },
+    children: [
+      {
+        path: "page",
+        component: () => import("../views/RolePage/page1.vue"),
+        name: "PagePermission",
+        meta: { title: "待分配列表", icon: "el-icon-house" },
+      },
+      {
+        path: "automatic",
+        component: () => import("../views/RolePage/automatic.vue"),
+        name: "AutomaticPermission",
+        meta: { title: "自动分配配置界面", icon: "el-icon-house" },
+      },
+      {
+        path: "admin",
+        component: () => import("../views/RolePage/admin.vue"),
+        name: "AdminPermission",
+        meta: { title: "待办列表", roles: ["admin"] },
+      },
+      {
+        path: "test",
+        component: () => import("../views/RolePage/test.vue"),
+        name: "TestPermission",
+        meta: { title: "初级岗处理页面", roles: ["test"] },
+      },
+      {
+        path: "pedcase",
+        component: () => import("../views/RolePage/peddingcase.vue"),
+        name: "PedPermission",
+        meta: { title: "待结案件", roles: ["admin"] },
+      },
+      {
+        path: "service",
+        component: () => import("../views/RolePage/servicefollow.vue"),
+        name: "ServicePermission",
+        meta: { title: "服务跟进列表", roles: ["admin"] },
+      },
+      {
+        path: "losses",
+        component: () => import("../views/RolePage/losses.vue"),
+        name: "LossesPermission",
+        meta: { title: "带追损列表", roles: ["admin"] },
+      },
+      {
+        path: "nopermission",
+        component: () => import("../views/RolePage/nopermission.vue"),
+        name: "NoPermission",
+        meta: { title: "未结投诉追踪列表", roles: ["admin"] },
+      },
+    ],
+  },
+  {
+    path: "/:catchAll(.*)*",
+    name: "NotFound",
+    hidden: true,
+    component: () => import("../views/sys/error-page/404.vue"),
+  }
